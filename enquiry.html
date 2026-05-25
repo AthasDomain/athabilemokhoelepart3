@@ -3,38 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GreenWave Gurus</title>
+    <link rel="stylesheet" href="css/style.css">
+    <title>GreenWave Gurus | Enquiry</title>
 </head>
 <body>
-<header>
-    <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="services.html">Services</a>
-    <a href="enquiry.html">Enquiry</a>
-    <a href="contact.html">Contact</a>
-    <a href="images.html">Gallery</a>
-</nav>
-</header>
-<h1>Enquiries</h1>
-<img src="images/logo2.jpg" alt="logo">
-<h2>FAQ</h2>
-<h3>Here are some frequently asked questions:</h3>
-<h4>How does recycling reduce pollution?</h4>
-<p>Recycling reduces pollution by minimizing the amount of waste sent to landfills and incinerators, which in turn reduces the emission of harmful gases and pollutants into the air and water.</p>
-<h4>What are the benefits of planting trees?</h4>
-<p>Planting trees provides numerous benefits, including improving air quality, providing shade and cooling, supporting wildlife habitats, and enhancing the overall beauty of the environment.</p>
-<h4>What are some innovative waste management practices?</h4>
-<p>Some innovative waste management practices include composting organic waste, implementing circular economy principles like reusing materials, and using advanced technologies which include automated systems and sensors for waste sorting and processing.</p>
-<h4>What is composting?</h4>
-<p>Composting is the natural decomposition of organic waste, such as food scraps and yard trimmings, into a nutrient-rich soil mixture that can be used to improve soil health and plant growth.</p>
-<h4>What is hazardous waste?</h4>
-<p>Hazardous waste refers to materials that pose a risk to human health or the environment due to their toxic, corrosive, or reactive properties.</p>
-<h4>How can I get in touch with you?</h4>
-<p>click on the button below to contact us:</p>
-<button onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSewb-jGnlGxFV0XI95wRFf3ee_xoMvrjpZqeT6_1PxOAlxEdw/viewform?usp=publish-editor'">Contact Us</button>
-  <footer>
-    <p>&copy; 2026 GreenWave Gurus | All Rights Reserved</p>
-</footer>  
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="images/logo2.jpg" alt="logo">
+                <span>GreenWave Gurus</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="enquiry.html">Enquiry</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="images.html">Gallery</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="enquiry-page">
+        <section class="enquiry-hero">
+            <div class="hero-copy">
+                <h1>Have Questions?</h1>
+                <p>Get in touch with us today. We'd love to hear from you and help answer any questions you may have about our services.</p>
+            </div>
+        </section>
+
+        <section class="enquiry-content">
+            <div class="enquiry-form-card">
+                <h2>Send us an Enquiry</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="6" required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit Enquiry</button>
+                </form>
+            </div>
+
+            <div class="enquiry-info">
+                <div class="info-card">
+                    <h3>Response Time</h3>
+                    <p>We typically respond to all enquiries within 24-48 business hours.</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>What we offer assistance for:</h3>
+                    <ul>
+                        <li>General inquiries about our services</li>
+                        <li>Recycling collection requests</li>
+                        <li>Community program information</li>
+                        <li>Partnership opportunities</li>
+                        <li>Volunteer inquiries</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>Contact Details</h3>
+                    <p><strong>Email:</strong> info@greenwavegurus.co.za</p>
+                    <p><strong>Phone:</strong> +27 (0) 11 234 5678</p>
+                    <p><strong>Address:</strong> 123 Green Street, Johannesburg, South Africa</p>
+                </div>
+            </div>
+        </section>
+                <section class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <h3>What items can be recycled?</h3>
+                    <p>We accept paper, cardboard, plastic, glass, and metal. All items must be clean and dry before submission. Please remove any macro-particles or contaminants.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How often do you collect waste?</h3>
+                    <p>Our refuse trucks collect waste twice a week on established routes. Contact us to arrange a collection schedule for your area.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Do you offer commercial recycling services?</h3>
+                    <p>Yes, we provide recycling solutions for businesses of all sizes. Please contact us for a customized quote.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Can I volunteer with GreenWave Gurus?</h3>
+                    <p>Absolutely! We welcome volunteers for our community initiatives, tree-planting events, and clean-up days. Submit an enquiry and let us know your interests.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How can I stay updated on events?</h3>
+                    <p>Follow us on social media or contact us directly. We announce all upcoming community events, workshops, and volunteer opportunities regularly.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>What is your mission?</h3>
+                    <p>Our commitment is to preserve our earth through community upliftment by creating work opportunities while ensuring sustainable use of natural resources for future generations.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p class="copyright">&copy; 2026 GreenWave Gurus | All Rights Reserved</p>
+    </footer>
 </body>
 </html>

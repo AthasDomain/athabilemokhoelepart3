@@ -3,49 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <title>GreenWave Gurus</title>
 </head>
 <body>
     <header>
-<nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="services.html">Services</a>
-    <a href="enquiry.html">Enquiry</a>
-    <a href="contact.html">Contact</a>
-    <a href="images.html">Gallery</a>
+<nav class="navbar">
+    <div class="logo">
+        <img src="images/logo2.jpg" alt="logo">
+        <span>GreenWave Gurus</span>
+    </div>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="enquiry.html">Enquiry</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="images.html">Gallery</a></li>
+    </ul>
 </nav>
 </header>
 
-<h1>Allow Us to Upcycle Your Knowledge About Us</h1>
-<br>
-<div id="gallery">
-    <img src="images/logo2.jpg" alt="logo">
-  </div>
-<p>GreenWave Gurus has been at the forefront of sustainable and healthier living.
-    We have always promoted a culture of recycling and our growth rate amongst our community over the years have 
-    allowed us to further reduce, reuse and recyle. Furthermore enabling us to conserve natural resources, contribute to the reduction of greenhouse gas emmissions and reduce pollution.</p>
-<h2>Our Mission</h2>
-<p>Our commitment is to preserve our earth through community upliftment by creating work opportunities while making sure we act accordingly to keep our natural resources for a long time.</p>
-<h2>Our Vision</h2>
-<img src="images/vision.jpg" alt="vision">
-<p>Through our input as a society we foresee a healthier planet</p>
-<br>
-<p>We follow KEY LEGISLATIONS for environmental protection and sustainability.</p>
-<ul>
-    <li>National Environmental Management Act (NEMA)</li>
-    <p>The foundational law for environmental governance, requiring Environmental Impact Assessments for development projects and pollution control measures.</p>
-    <li>National Waste Management Strategy (NWMS)</li>
-    <p>A comprehensive strategy for managing waste in a manner that minimizes environmental impact and promotes sustainability.</p>
-    <li>National Environmental Management: Waste Act (NEMWA)</li>
-    <p>Governs waste management, recycling and disposal practices.</p>
-    <li>National Environmental Management: Air Quality Act (NEMAQA)</li>
-    <p>Regulates air quality, sets emissions standards and protects against air pollution.</p>
-    <li>National Environmental Management: Biodiversity Act (NEMBA)</li>
-    <p>Focuses on conservation of ecosystems like wetlands and forests, protected areas and species including endangered ones.</p>
-</ul>   
+<main class="about-page">
+  <section class="about-hero">
+    <div class="hero-copy">
+      <h1>Allow Us to Upcycle Your Knowledge About Us</h1>
+      <p>GreenWave Gurus has been at the forefront of sustainable and healthier living. We promote recycling and help our community reduce, reuse and recycle while protecting our planet.</p>
+    </div>
+  </section>
+
+  <section class="about-content">
+    <div class="card">
+      <h2>Our Mission</h2>
+      <p>Our commitment is to preserve our earth through community upliftment by creating work opportunities while making sure we act accordingly to keep our natural resources for a long time.</p>
+    </div>
+
+    <div class="card">
+      <h2>Our Vision</h2>
+      <img src="images/vision.jpg" alt="vision" class="about-img">
+      <p>Through our input as a society we foresee a healthier planet.</p>
+    </div>
+
+    <div class="card laws">
+      <h2>Key Environmental Legislations:</h2>
+      <div class="flip-grid">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h3>National Environmental Management Act (NEMA)</h3>
+            </div>
+            <div class="flip-card-back">
+              <p>The foundational law for environmental governance, requiring Environmental Impact Assessments and pollution control.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h3>National Waste Management Strategy (NWMS)</h3>
+            </div>
+            <div class="flip-card-back">
+              <p>A strategy for managing waste to minimize environmental impact and promote sustainability.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h3>National Environmental Management: Waste Act (NEMWA)</h3>
+            </div>
+            <div class="flip-card-back">
+              <p>Governs waste management, recycling and disposal practices.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h3>National Environmental Management: Air Quality Act (NEMAQA)</h3>
+            </div>
+            <div class="flip-card-back">
+              <p>Regulates air quality, sets emissions standards and protects against pollution.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h3>National Environmental Management: Biodiversity Act (NEMBA)</h3>
+            </div>
+            <div class="flip-card-back">
+              <p>Focuses on conservation of ecosystems like wetlands and forests and protects endangered species.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
 <footer>
-    <p>&copy; 2026 GreenWave Gurus | All Rights Reserved</p>
+    <p class="copyright">&copy; 2026 GreenWave Gurus | All Rights Reserved</p>
 </footer>
 
 </body>
