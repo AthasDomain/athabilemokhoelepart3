@@ -86,7 +86,7 @@ body {
     justify-content: center;
     padding: 0 20px;
     background: linear-gradient(180deg, rgba(10, 45, 22, 0.55), rgba(10, 45, 22, 0.35)),
-                url("../images/SouthAfrica.jpg") center/cover no-repeat;
+                url("../images/wallpaper.jpg") center/cover no-repeat;
     position: relative;
 }
 
@@ -162,6 +162,13 @@ body {
     border-radius: 18px;
     box-shadow: 0 18px 40px rgba(15, 40, 20, 0.08);
     border: 1px solid rgba(46, 204, 113, 0.16);
+    transition: transform 320ms cubic-bezier(.2,.9,.3,1), box-shadow 320ms ease;
+}
+
+.feature-card:hover,
+.feature-card:focus-within {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 28px 60px rgba(15, 40, 20, 0.12);
 }
 
 .feature-card h3 {
@@ -231,6 +238,20 @@ body {
     margin-bottom: 20px;   
 }
 
+/* Reveal animation for 'Why we do this?' */
+.will-reveal {
+    opacity: 1;
+    transform: none;
+    transition: transform 320ms cubic-bezier(.2,.9,.3,1), box-shadow 320ms ease;
+    will-change: transform, box-shadow;
+}
+.will-reveal.revealed,
+.will-reveal:hover,
+.will-reveal:focus-within {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 18px 40px rgba(15, 40, 20, 0.08);
+}
+
 .section-img {
     width: 100%;
     max-width: 600px;
@@ -268,6 +289,42 @@ body {
     transform: translateX(15px);
     box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.15);
     border-color: #27ae60;
+}
+
+/* Facts carousel styles */
+.facts-list {
+    position: relative;
+}
+.facts-list .fact-item {
+    display: none;
+    opacity: 0;
+    transition: opacity 320ms ease;
+}
+.facts-list .fact-item.active {
+    display: block;
+    opacity: 1;
+}
+.facts-dots {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 12px;
+}
+.facts-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background: #d1d5d1;
+    padding: 0;
+    cursor: pointer;
+}
+.facts-dot.active {
+    background: #2ecc71;
+}
+.facts-dot:focus {
+    outline: 2px solid #196127;
+    outline-offset: 3px;
 }
 
 .wavy-text {
@@ -323,9 +380,21 @@ body {
   color: #333;
 }
 
+/* Slide-up reveal for About page sections */
+.about-page > section {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 520ms cubic-bezier(.2,.9,.3,1), transform 520ms cubic-bezier(.2,.9,.3,1);
+    will-change: opacity, transform;
+}
+.about-page > section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .about-hero {
-  background: linear-gradient(180deg, rgba(10, 70, 30, 0.9), rgba(10, 70, 30, 0.7)),
-              url("../images/SouthAfrica.jpg") center/cover no-repeat;
+    background: linear-gradient(180deg, rgba(10, 70, 30, 0.9), rgba(10, 70, 30, 0.7)),
+                            url("../images/wallpaper.jpg") center/cover no-repeat;
   border-radius: 18px;
   padding: 50px 30px;
   color: white;
@@ -355,11 +424,83 @@ body {
   color: #1d5f2d;
 }
 
+/* Accordion styles for About page */
+.about-content .card h2[role="button"] {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+.accordion-content {
+    overflow: hidden;
+    transition: max-height 360ms cubic-bezier(.2,.9,.3,1);
+}
+
+
+.about-content .card h2::after {
+    content: '\25BE';
+    font-size: 0.9em;
+    transition: transform 260ms ease;
+}
+.about-content .card.open h2::after {
+    transform: rotate(180deg);
+}
+
 .about-img {
   width: 100%;
   border-radius: 12px;
   margin: 16px 0;
   display: block;
+}
+
+/* Vision image overlay */
+.vision-wrap {
+    position: relative;
+    display: block;
+    border-radius: 12px;
+    overflow: hidden;
+}
+.vision-wrap .about-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 420ms cubic-bezier(.2,.9,.3,1);
+}
+.vision-wrap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    opacity: 0;
+    transition: opacity 320ms ease;
+}
+.vision-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 18px 20px;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 300ms ease, transform 300ms cubic-bezier(.2,.9,.3,1);
+    pointer-events: none;
+}
+.vision-wrap:hover::before,
+.vision-wrap:focus-within::before {
+    opacity: 1;
+}
+.vision-wrap:hover .about-img,
+.vision-wrap:focus-within .about-img {
+    transform: scale(1.04);
+}
+.vision-wrap:hover .vision-caption,
+.vision-wrap:focus-within .vision-caption {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .laws .law-list {
@@ -396,6 +537,74 @@ body {
 .flip-card {
     perspective: 1000px;
     cursor: pointer;
+}
+.gallery-page {
+    padding-bottom: 60px;
+}
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+    padding: 20px;
+}
+.gallery-grid img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 180ms ease, box-shadow 180ms ease;
+    display: block;
+}
+.gallery-grid img:hover,
+.gallery-grid img:focus {
+    transform: scale(1.03);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+    z-index: 2;
+}
+
+/* Full-screen preview overlay */
+.preview-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.65);
+    z-index: 1200;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 160ms ease;
+}
+.preview-overlay.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+.preview-overlay img {
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    max-height: none;
+    object-fit: contain;
+    border-radius: 0;
+    box-shadow: none;
+    transform: none;
+    transition: none;
+}
+.preview-overlay .close-hint {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    color: #fff;
+    background: rgba(0,0,0,0.35);
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+/* Prevent background scroll while preview is open */
+body.preview-open {
+    overflow: hidden;
 }
 .flip-card-inner {
     position: relative;
@@ -467,6 +676,96 @@ body {
     margin-bottom: 50px;
 }
 
+/* Service filters */
+.service-filters {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 18px 0;
+}
+.filter-btn {
+    background: #f1f6f1;
+    border: 1px solid #dfeee0;
+    color: #196127;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+.filter-btn.active {
+    background: #2ecc71;
+    color: #fff;
+    border-color: #27ae60;
+}
+
+/* Fade hide/show for service cards */
+.service-card {
+    transition: opacity 360ms ease, transform 360ms ease;
+    /* start hidden for slide-up reveal */
+    opacity: 0;
+    transform: translateY(18px);
+}
+.service-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.service-card.fading-out {
+    opacity: 0;
+    transform: translateY(8px) scale(.995);
+    pointer-events: none;
+}
+.service-card.hidden {
+    display: none !important;
+}
+
+/* Expandable service card body */
+.service-body {
+    overflow: hidden;
+    transition: max-height 420ms cubic-bezier(.2,.9,.3,1), opacity 320ms ease;
+    max-height: 3.6em; /* approximate two lines */
+}
+.service-card.expanded .service-body { }
+.read-more {
+    display: inline-block;
+    margin-top: 10px;
+    background: transparent;
+    border: 1px solid rgba(25,97,39,0.12);
+    color: #196127;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+.read-more:hover { background: rgba(25,97,39,0.04); }
+
+/* Event countdown timer */
+.event-timer {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 12px;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+.event-timer .time-part {
+    background: rgba(255,255,255,0.06);
+    padding: 8px 12px;
+    border-radius: 8px;
+    text-align: center;
+    min-width: 64px;
+}
+.event-timer .value {
+    display: block;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #1d5f2d;
+}
+.event-timer .label {
+    display: block;
+    font-size: 0.75rem;
+    color: #4b5d45;
+}
+
 .service-card {
     background: #ffffff;
     border-radius: 12px;
@@ -536,6 +835,165 @@ body {
     line-height: 1.6;
 }
 
+/* Engagement accordion styles */
+.engagement-card h2[role="button"] {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+.engagement-card h2::after {
+    content: '\25BE';
+    transition: transform 220ms ease;
+}
+.engagement-card.open h2::after {
+    transform: rotate(180deg);
+}
+.engagement-card .accordion-content {
+    overflow: hidden;
+    transition: max-height 360ms cubic-bezier(.2,.9,.3,1);
+    max-height: 0;
+}
+.engagement-card.open {
+    /* visual cue when open (optional) */
+    box-shadow: 0 10px 30px rgba(15,40,20,0.06);
+}
+
+/* Enquiry form validation styles */
+.form-group { position: relative; }
+.error-msg {
+    display: block;
+    margin-top: 6px;
+    color: #c0392b;
+    font-size: 13px;
+    line-height: 1.2;
+    min-height: 18px;
+}
+input.invalid, textarea.invalid {
+    border-color: #c0392b;
+    box-shadow: 0 6px 18px rgba(192,57,43,0.06);
+}
+.char-counter-wrap { display:flex; justify-content:flex-end; }
+.char-counter {
+    font-size: 13px;
+    color: #666;
+    margin-top: 6px;
+    transition: color 180ms ease, transform 180ms ease;
+}
+.char-counter.over { color: #c0392b; transform: scale(1.02); }
+
+/* Floating label styles */
+.form-group.floating { position: relative; }
+.form-group.floating input,
+.form-group.floating textarea {
+    padding-top: 18px;
+}
+.form-group.floating label {
+    position: absolute;
+    left: 12px;
+    top: 10px;
+    font-size: 15px;
+    color: #666;
+    pointer-events: none;
+    transition: transform 180ms ease, font-size 180ms ease, color 180ms ease, top 180ms ease;
+    transform-origin: left top;
+    background: transparent;
+    padding: 0 4px;
+}
+.form-group.floating input:focus + label,
+.form-group.floating textarea:focus + label,
+.form-group.floating input.filled + label,
+.form-group.floating textarea.filled + label {
+    transform: translateY(-12px) scale(0.88);
+    color: #2c8a3a;
+    top: 6px;
+}
+.form-group.floating input::placeholder,
+.form-group.floating textarea::placeholder {
+    color: transparent;
+}
+
+/* FAQ accordion styles */
+.faq-section { margin-top: 36px; }
+.faq-container { display: block; }
+.faq-item { background: #fff; border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; border: 1px solid #e9ecef; }
+.faq-item h3 { margin: 0; cursor: pointer; position: relative; padding-right: 24px; font-size: 16px; }
+.faq-item h3::after { content: '\25BE'; position: absolute; right: 6px; top: 50%; transform: translateY(-50%); transition: transform 220ms ease; color: #666; }
+.faq-item.open h3::after { transform: translateY(-50%) rotate(180deg); }
+.faq-item .accordion-content { overflow: hidden; transition: max-height 320ms cubic-bezier(.2,.9,.3,1); max-height: 0; }
+.faq-item .accordion-content p { margin: 12px 0 0; color: #444; }
+
+/* Copy button styles */
+.copy-text { display: inline-block; }
+.copy-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8px;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    color: #2c3e50;
+    position: relative;
+    padding: 6px 6px;
+    border-radius: 6px;
+}
+.copy-btn .icon { font-size: 14px; line-height: 1; }
+.copy-btn:focus { outline: 2px solid rgba(44,138,58,0.18); }
+.copy-tooltip {
+    position: absolute;
+    top: -34px;
+    right: 4px;
+    background: #222;
+    color: #fff;
+    font-size: 12px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+.copy-btn.show-tooltip .copy-tooltip { display: block; }
+.copy-tooltip[hidden] { display: none; }
+.map-card h3 { display:flex; align-items:center; gap:8px; }
+.map-card .copy-btn { margin-left: auto; }
+
+/* Map placeholder and spinner */
+.map-placeholder { position: relative; height: 220px; border-radius: 8px; overflow: hidden; background: linear-gradient(180deg,#f3f6f4,#eef6f0); display:flex; align-items:center; justify-content:center; flex-direction:column; color:#4b6b54; }
+.map-placeholder .placeholder-text { margin-top:8px; font-size:14px; color:#5c6b63; }
+.spinner { width: 36px; height: 36px; border-radius: 50%; border: 4px solid rgba(0,0,0,0.08); border-top-color: #2c8a3a; animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.map-placeholder.loaded { background: transparent; }
+.map-placeholder iframe { position: absolute; left:0; top:0; width:100%; height:100%; border:0; }
+
+.form-status {
+    position: fixed;
+    top: 18%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-6px) scale(0.98);
+    z-index: 1200;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #eefaf0;
+    border: 1px solid #c9eed4;
+    color: #1b6b2a;
+    padding: 16px 20px;
+    border-radius: 12px;
+    min-width: 320px;
+    box-shadow: 0 12px 40px rgba(8,30,10,0.08);
+    font-size: 16px;
+    transition: opacity 220ms ease, transform 260ms cubic-bezier(.2,.9,.3,1);
+    opacity: 0;
+    pointer-events: none;
+}
+.form-status[hidden] { display: none; }
+.form-status:not([hidden]) { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); pointer-events: auto; }
+.form-status .check {
+    font-size: 22px;
+    line-height: 1;
+}
+
 /*ENQUIRY PAGE STYLES*/
 
 .enquiry-page {
@@ -547,12 +1005,22 @@ body {
 
 .enquiry-hero {
     background: linear-gradient(180deg, rgba(10, 70, 30, 0.9), rgba(10, 70, 30, 0.75)),
-                url("../images/SouthAfrica.jpg") center/cover no-repeat;
+                url("../images/wallpaper.jpg") center/cover no-repeat;
     border-radius: 18px;
     padding: 50px 30px;
     color: white;
     margin-bottom: 40px;
     text-align: center;
+}
+
+/* Wallpaper: make bigger and interactive */
+.hero, .about-hero, .enquiry-hero {
+    background-size: 130% !important;
+    background-position: center;
+    transition: background-size 700ms ease, background-position 450ms ease;
+}
+.hero:hover, .about-hero:hover, .enquiry-hero:hover {
+    background-size: 150% !important;
 }
 
 .enquiry-hero .hero-copy {
